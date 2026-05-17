@@ -64,7 +64,7 @@ export const loginUser = async (
     console.log("ROLE:", user?.role);
 
     if (!user) {
-      res.status(400).json({ message: "Invalid credentials" });
+      res.status(400).json({ message: "Invalid email or password" });
       return;
     }
 
