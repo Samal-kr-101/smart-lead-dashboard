@@ -64,6 +64,71 @@ It includes authentication, role-based access control, and complete lead managem
 
 ---
 
+## 📡 API Documentation
+
+Base URL:
+http://localhost:5000/api
+
+🔐 Auth APIs
+Register
+
+POST /auth/register
+{
+  "name": "John",
+  "email": "john@gmail.com",
+  "password": "123456"
+}
+
+Response:
+
+{
+  "message": "User registered",
+  "token": "JWT_TOKEN"
+}
+
+Login
+
+POST /auth/login
+{
+  "email": "john@gmail.com",
+  "password": "123456"
+}
+
+Login
+
+POST /auth/login
+{
+  "email": "john@gmail.com",
+  "password": "123456"
+}
+
+📊 Leads APIs (Protected)
+Header:
+
+Authorization: Bearer <token>
+Get Leads
+GET /leads
+
+Create Lead
+POST /leads
+
+{
+  "name": "Client A",
+  "email": "client@gmail.com",
+  "phone": "9876543210",
+  "status": "New"
+}
+
+Update Lead
+PUT /leads/:id
+{
+  "status": "Contacted"
+}
+
+Delete Lead
+DELETE /leads/:id
+
+---
 ## 📂 Project Structure
 
 Smart Lead Dashboard/
