@@ -17,7 +17,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import AppLayout from "./layouts/AppLayout";
 
 function App() {
-  const token = localStorage.getItem("token"); // 🔥 important
+  const token = localStorage.getItem("token");
 
   return (
     <BrowserRouter>
