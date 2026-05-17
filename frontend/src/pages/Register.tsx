@@ -6,6 +6,13 @@ import API from "../api/axios";
 const Register = () => {
   const navigate = useNavigate();
 
+    const [password, setPassword] = useState("");
+
+    <input
+  type="password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+/>
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -23,7 +30,7 @@ const Register = () => {
     toast.error("Password must be at least 6 characters");
     return;
   }
-  
+
     try {
       // ✅ USE CENTRAL API INSTANCE (NO LOCALHOST)
       await API.post("/auth/register", form);
