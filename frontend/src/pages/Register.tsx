@@ -6,13 +6,6 @@ import API from "../api/axios";
 const Register = () => {
   const navigate = useNavigate();
 
-    const [password, setPassword] = useState("");
-
-    <input
-  type="password"
-  value={password}
-  onChange={(e) => setPassword(e.target.value)}
-/>
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -26,18 +19,18 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (password.length < 6) {
-    toast.error("Password must be at least 6 characters");
-    return;
-  }
+    // ✅ FIX: use form.password
+    if (form.password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    }
 
     try {
-      // ✅ USE CENTRAL API INSTANCE (NO LOCALHOST)
+      // API call
       await API.post("/auth/register", form);
 
       toast.success("Registered successfully!");
       navigate("/login");
-
     } catch (err: any) {
       toast.error(
         err.response?.data?.message || "Error registering user"
@@ -47,7 +40,6 @@ const Register = () => {
 
   return (
     <div className="auth-page">
-
       {/* LEFT SIDE */}
       <div className="auth-left">
         <div className="auth-overlay">
@@ -62,7 +54,6 @@ const Register = () => {
       {/* RIGHT SIDE */}
       <div className="auth-right">
         <form onSubmit={handleSubmit} className="auth-form">
-
           <h2 className="auth-title">Create Account</h2>
 
           <p className="auth-subtitle">Register to continue</p>
@@ -109,10 +100,8 @@ const Register = () => {
               Login
             </a>
           </p>
-
         </form>
       </div>
-
     </div>
   );
 };
