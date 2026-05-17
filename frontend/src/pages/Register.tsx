@@ -19,6 +19,11 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (password.length < 6) {
+    toast.error("Password must be at least 6 characters");
+    return;
+  }
+  
     try {
       // ✅ USE CENTRAL API INSTANCE (NO LOCALHOST)
       await API.post("/auth/register", form);
